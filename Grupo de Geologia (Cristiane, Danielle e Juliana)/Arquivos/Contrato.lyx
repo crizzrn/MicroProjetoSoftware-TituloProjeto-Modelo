@@ -1,0 +1,1153 @@
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 643
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass extbook
+\begin_preamble
+%-----------------------------------------------------------------
+% Para incluir formatações especificas para apresentações
+%-----------------------------------------------------------------
+%https://tex.stackexchange.com/questions/5894/latex-conditional-expression
+% Abaixo inserimos o pacote etoolbox que permite a gestão de if..else
+\usepackage{etoolbox}
+% Cria o flag
+\newtoggle{FormatoApresentacaoTRUE}
+\newtoggle{IncluirBibliografiaNoCapituloTRUE}
+%Seta o flag - deixe true se for para gerar apresentação de aula e false para formato livro
+%\toggletrue{FormatoApresentacaoTRUE}
+\togglefalse{FormatoApresentacaoTRUE}
+%\toggletrue{IncluirBibliografiaNoCapituloTRUE}
+\togglefalse{IncluirBibliografiaNoCapituloTRUE}
+% Para usar no meio dos arquivos do lyx crie um comando latex e cole o texto abaixo
+%\iftoggle{FormatoApresentacaoTRUE}{..verdadeiro..}{..falso..}
+%\iftoggle{FormatoApresentacaoTRUE}{\newpage}{}
+%---------------------------------------------------------------
+% Para adicionar/excluir uma seção inteira
+%---------------------------------------------------------------
+%https://tex.stackexchange.com/questions/193295/lyx-conditional-sections
+% Abaixo criamos um novo if
+\newif\ifIncluirSecaoProgramacaoAvancada
+%\FormatoApresentacaoWidefalse
+\IncluirSecaoProgramacaoAvancadatrue
+% Para usar
+% \ifIncluirSecaoProgramacaoAvancada no início do blobo
+% \fi para finalizar o bloco
+%---------------------------------------------------------------
+%GERAL
+%---------------------------------------------------------------
+\usepackage{verbatim}
+%%\usepackage{algorithm}
+\usepackage{fancyvrb}
+\usepackage{keyval}
+\usepackage{indentfirst}
+%\usepackage{color}
+\usepackage{xcolor}
+\definecolor{azulclaro}{rgb}{0.6,1,1}%   rgb color model
+\definecolor{BLACK}{rgb}{0,0,0}%   rgb color model
+\definecolor{BLUE}{rgb}{0,0,1}%   rgb color model
+%Informa que vai usar o pacote listings, disponibilizado em /usr/share/texmf/doc/latex/styles/listings.dvi
+\usepackage{listings}
+%Define um novo comando, chamado lst
+%observe que lst chama o comando  lstinputlisting.
+\newcommand{\lst}[2]{%
+    \noindent\rule[-1ex]{\textwidth}{0.3mm}\vspace{-1ex}
+    \lstinputlisting[caption={#2},label={#1},stringspaces=false,frame={tb},lineskip=-1pt,extendedchars=true,%
+    basicstyle=\footnotesize\tt,labelstep=1,labelstyle=\tiny,indent=2em,language=Java,breaklines]{#1}
+    \vspace{1ex}%
+}
+%\listfiles
+%\usepackage[]{hyperref}
+%\usepackage{mathptmx}  % instead of package times
+%\usepackage[scaled=0.9]{helvet} % or [scaled=0.92], if you like
+%% Pacote de citações para formato abnt
+%%\usepackage[num]{abntcite}
+%%\usepackage[alf]{abntcite}
+%%\usepackage[cam,a4,center]{crop}
+%% a4 é o tamanho físico
+%% center é para centralizar
+%% cam inclui quatro marcas diferentes
+%%\usepackage[cam,width=20truecm,height=28truecm,center]{crop}
+%\usepackage[cam,width=18truecm,height=26truecm,center]{crop}
+%\noindent
+\end_preamble
+\use_default_options false
+\master 3-Projeto-ModelosDeEngenharia-Master.lyx
+\maintain_unincluded_children no
+\language brazilian
+\language_package auto
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement ph
+\float_alignment class
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref false
+\papersize a4
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style apalike
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification default
+\crossref_package prettyref
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lightgray
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
+\paperwidth 210mm
+\paperheight 297mm
+\leftmargin 18mm
+\topmargin 22mm
+\rightmargin 18mm
+\bottommargin 20mm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\docbook_mathml_version 0
+\end_header
+
+\begin_body
+
+\begin_layout Chapter*
+Contrato de Prestação de Serviços de Engenharia de Software
+\end_layout
+
+\begin_layout Standard
+Pelo presente instrumento particular,
+ de um lado,
+ doravantes denominados simplesmente CONTRATANTES:
+ Lara Sobrinho Miranda,
+ Maria Vitória Silva dos Reis e Yan Lucas Albuquerque Lopes e,
+ de outro lado,
+ doravantes denominadas simplesmente CONTRATADAS:
+ Cristiane de Souza Paes da Silva,
+ Danielle Borrejo Cavicchia e Juliana Manhães Ribeiro da Silva,
+ celebram o presente 
+\emph on
+Contrato de Prestação de Serviços de Engenharia de Software
+\emph default
+,
+ mediante as cláusulas e condições a seguir estipuladas.
+\end_layout
+
+\begin_layout Itemize
+CLÁUSULA 1 - DO OBJETO
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+O presente contrato tem por objeto a especificação,
+ modelagem UML e futuro desenvolvimento de um software aplicativo voltado à resolução de um problema específico de Engenharia de Petróleo,
+ relacionado à estimativa de permeabilidade em fácies complexas a partir da correlação entre porosidade e permeabilidade,
+ em conformidade com a metodologia proposta para o desenvolvimento do microprojeto de engenharia.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+CLÁUSULA 2 - ESCOPO DO PROBLEMA DE ENGENHARIA
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Objetivo:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+O software de Petrofísica para Correlação Porosidade Permeabilidade é um sistema de apoio à análise petrofísica desenvolvido para estimar a permeabilidade 
+\begin_inset Formula $k$
+\end_inset
+
+ a partir da porosidade 
+\begin_inset Formula $\phi$
+\end_inset
+
+,
+ considerando a variação dos dados em fácies complexas.
+ O sistema permite dividir os dados em intervalos menores de porosidade,
+ aplicar aproximações locais por polinômio de Taylor para representar a relação 
+\begin_inset Formula $k$
+\end_inset
+
+ = f(
+\begin_inset Formula $\phi$
+\end_inset
+
+) e calcular o coeficiente de determinação R²,
+ permitindo avaliar a qualidade do ajuste e identificar se a fácies apresenta comportamento mais homogêneo ou heterogêneo.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Público-Alvo:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Petrofísicos;
+\end_layout
+
+\begin_layout Itemize
+Geólogos e geofísicos;
+\end_layout
+
+\begin_layout Itemize
+Engenheiros de petróleo;
+\end_layout
+
+\begin_layout Itemize
+Pesquisadores que trabalham com análise de dados petrofísicos;
+\end_layout
+
+\begin_layout Itemize
+Profissionais que atuam em estudos de porosidade,
+ permeabilidade e caracterização de fácies complexas.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Especificação:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+O software deverá permitir a entrada de arquivos contendo dados petrofísicos,
+ preferencialmente nos formatos CSV ou XLSX.
+ O arquivo deverá conter,
+ obrigatoriamente,
+ uma coluna de porosidade 
+\begin_inset Formula $\phi$
+\end_inset
+
+ e uma coluna de permeabilidade 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ Quando disponível,
+ também poderá conter uma coluna com a identificação da fácies.
+ Após a importação dos dados,
+ o usuário deverá informar o número de intervalos ou o tamanho dos intervalos de porosidade,
+ o grau do polinômio de Taylor a ser utilizado e o valor mínimo aceitável de R² para classificar uma fácies ou intervalo como homogêneo.
+\end_layout
+
+\begin_layout Itemize
+O sistema deverá dividir os dados em intervalos restritos de porosidade,
+ ajustar localmente a relação 
+\begin_inset Formula $k$
+\end_inset
+
+ = f(
+\begin_inset Formula $\phi$
+\end_inset
+
+) por meio de aproximação polinomial,
+ calcular a permeabilidade estimada,
+ comparar os valores estimados com os valores reais e calcular o coeficiente de determinação R² para cada intervalo analisado.
+\end_layout
+
+\begin_layout Itemize
+Como saída,
+ o software deverá gerar tabelas com os resultados por intervalo,
+ gráficos de dispersão entre porosidade e permeabilidade,
+ curvas ajustadas pelo modelo,
+ indicação do valor de R² e uma classificação final indicando regiões homogêneas e heterogêneas.
+ Ao final,
+ deverá ser possível gerar um relatório com os resultados da análise.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Cenários:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A fim de delimitar a fronteira de interação entre os atores e o sistema,
+ ficam estabelecidos os cenários principais de uso abaixo descritos:
+\end_layout
+
+\begin_layout Itemize
+Cenário 1 (caminho Feliz):
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+O usuário importa um arquivo CSV ou XLSX contendo dados de porosidade ϕ e permeabilidade k.
+ Em seguida,
+ seleciona a fácies,
+ caso essa informação esteja disponível,
+ define o número ou tamanho dos intervalos de porosidade,
+ escolhe o grau do polinômio de Taylor e informa o valor mínimo aceitável de R².
+ O sistema valida os dados,
+ separa as amostras em intervalos restritos,
+ aplica o ajuste local por polinômio de Taylor,
+ estima os valores de permeabilidade,
+ calcula o R² em cada intervalo e classifica os trechos como homogêneos ou heterogêneos.
+ Por fim,
+ gera gráficos,
+ tabelas e relatório final.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Cenário 2 (Fluxo de Exceção):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+O usuário tenta importar um arquivo sem as colunas obrigatórias de porosidade 
+\begin_inset Formula $\phi$
+\end_inset
+
+ e permeabilidade 
+\begin_inset Formula $k$
+\end_inset
+
+,
+ ou com valores inválidos,
+ vazios,
+ negativos indevidos ou incompatíveis com a análise.
+ O sistema identifica o problema,
+ informa ao usuário que os dados de entrada são inconsistentes e solicita a correção do arquivo antes de continuar o processamento.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Requisitos:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+RF - Requisito Funcional
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ID
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Nome;
+\end_layout
+
+\begin_layout Itemize
+Descrição;
+\end_layout
+
+\begin_layout Itemize
+Prioridade.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+RF01
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Importação de dados petrofísicos.
+\end_layout
+
+\begin_layout Itemize
+O sistema deve permitir a entrada de arquivos com dados petrofísicos,
+ preferencialmente em formato CSV ou XLSX,
+ contendo a coluna de porosidade 
+\begin_inset Formula $\phi$
+\end_inset
+
+,
+ a coluna de permeabilidade 
+\begin_inset Formula $k$
+\end_inset
+
+ e,
+ quando disponível,
+ a identificação da fácies.
+\end_layout
+
+\begin_layout Itemize
+Alta
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+RF02
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Definição dos intervalos de porosidade
+\end_layout
+
+\begin_layout Itemize
+O usuário deve poder informar o número de intervalos ou o tamanho dos intervalos de porosidade,
+ para que o conjunto de dados seja dividido em intervalos restritos.
+\end_layout
+
+\begin_layout Itemize
+Alta
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+RF03
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aplicação da aproximação por polinômio de Taylor
+\end_layout
+
+\begin_layout Itemize
+O sistema deve aplicar aproximações locais por meio do polinômio de Taylor para modelar a relação 
+\begin_inset Formula $k$
+\end_inset
+
+ = f(
+\begin_inset Formula $\phi$
+\end_inset
+
+) em cada intervalo restrito de porosidade.
+\end_layout
+
+\begin_layout Itemize
+Alta
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+RF04
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Cálculo do Coeficiente de Determinação R²
+\end_layout
+
+\begin_layout Itemize
+O sistema deve calcular o coeficiente de determinação R² para cada intervalo analisado,
+ permitindo avaliar a qualidade do ajuste e identificar regiões homogêneas e heterogêneas.
+\end_layout
+
+\begin_layout Itemize
+Alta
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+RF05
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Geração de Resultados
+\end_layout
+
+\begin_layout Itemize
+O sistema deve gerar tabelas,
+ gráficos e relatório final com as estimativas de permeabilidade,
+ os valores de R² e a identificação das regiões homogêneas e heterogêneas.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+RNF - Requisito Não Funcional
+\end_layout
+
+\begin_layout Itemize
+RNF01 - Plataforma:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+O software deve ser uma aplicação modo terminal multiplataforma
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+RNF02 - Tecnologias Sugeridas:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+O sistema deve ser modelado visando implementação em C++ moderno,
+ com estrutura organizada em classes e separação adequada das responsabilidades do software.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+RNF03 - Desempenho:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A leitura dos dados,
+ a divisão em intervalos,
+ a aplicação da aproximação por polinômio de Taylor e o cálculo do coeficiente R² devem ocorrer em tempo adequado para uso acadêmico e experimental.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+RNF04 - Usabilidade:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A interface deve utilizar textos claros,
+ informando ao usuário os dados necessários,
+ os parâmetros de entrada,
+ os possíveis erros no arquivo e os resultados obtidos na estimativa de permeabilidade.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+RN - Regras de Negócio
+\end_layout
+
+\begin_layout Itemize
+RN01 - Dados Obrigatórios:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+O arquivo de entrada deve conter obrigatoriamente uma coluna de porosidade 
+\begin_inset Formula $\phi$
+\end_inset
+
+ e uma coluna de permeabilidade 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ A identificação da fácies será utilizada quando disponível.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+RN02 - Critério de Homogeneidade:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Para validar a homogeneidade da fácies,
+ o sistema deve comparar o valor de R² calculado em cada intervalo com o valor mínimo aceitável informado pelo usuário.
+ Intervalos com R² maior ou igual ao valor mínimo serão considerados homogêneos.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+CLÁUSULA 3 - PRAZOS E CRONOGRAMA (
+\emph on
+SPRINT
+\emph default
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+As partes acordam o seguinte cronograma de entregas técnicas,
+ sujeito à validação da CONTRATANTE:
+\end_layout
+
+\begin_layout Itemize
+Dia 1:
+ Concepção Preliminar e Proposta (Em Sala e Em Casa) 
+\end_layout
+
+\begin_layout Itemize
+Cliente:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Elabora e entrega o documento 
+\begin_inset Quotes eld
+\end_inset
+
+ESCOPO DO PROBLEMA DE ENGENHARIA
+\begin_inset Quotes erd
+\end_inset
+
+,
+ detalhando 
+\series bold
+Objetivo,
+ Público-Alvo,
+ Especificação,
+ Cenários,
+ Requisitos
+\series default
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Executor (Pré-venda):
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Monta a Proposta Técnica contendo a experiência da equipe,
+ uma elaboração preliminar do problema (o que entenderam),
+ primeira versão do Diagrama de Casos de Uso (Concepção),
+ esboço do Diagrama de Classes (Domínio) e primeiro rascunho do Diagrama de Sequência.
+ Orçamento e Cronograma Preliminar.
+\end_layout
+
+\begin_layout Itemize
+Entrega:
+ Via e-mail ou repositório temporário para avaliação do cliente.
+\end_layout
+
+\begin_layout Itemize
+Cliente (Em casa):
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Revisão da proposta enviada pelo executor e preparação de dúvidas.
+\end_layout
+
+\begin_layout Itemize
+Verificar se houve um claro entendimento do problema a ser resolvido.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Dia 2:
+ Elaboração,
+ Contratação e Análise OO (Reunião Formal e Em Casa)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reunião Formal:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Executor apresenta competências da equipe (histórico de projetos desenvolvidos - 
+\emph on
+marketing
+\emph default
+);
+ soluções arquiteturais desenvolvidas (modelos uml),
+ orçamento e cronograma preliminar.
+\end_layout
+
+\begin_layout Itemize
+Cliente analisa a proposta,
+ verifica e aprofunda os requisitos técnicos (cálculos,
+ física,
+ química,
+ engenharia) e valida a viabilidade técnica.
+\end_layout
+
+\begin_layout Itemize
+Negociação e Assinatura deste Contrato.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Executor (Em casa):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Configuração oficial do Repositório Git/GitHub (aplicação de versionamento inicial).
+ Clonar o 
+\begin_inset CommandInset href
+LatexCommand href
+name "repositório modelo"
+target "https://github.com/ldsc/LDSC-ProjetoEngenharia-3-MicroProjetoSoftware-TituloProjeto"
+literal "false"
+
+\end_inset
+
+,
+ adicionar membros (clientes e equipe desenvolvimento).
+\end_layout
+
+\begin_layout Itemize
+Execução da fase de Elaboração:
+ Estudo do problema.
+ Montagem do Diagrama de Pacotes / Assuntos.
+\end_layout
+
+\begin_layout Itemize
+Consolidação da Análise OO:
+ Montagem dos Diagramas de Casos de Uso Geral e Específicos,
+ Diagrama de assuntos e pacotes.
+ Diagrama de Classes,
+ Diagramas de Sequência (cenários principais),
+ Diagrama de Comunicação e Diagrama de Máquina de Estado.
+ 
+\end_layout
+
+\begin_layout Itemize
+Documentação para apresentação formal.
+\end_layout
+
+\begin_layout Itemize
+Entrega:
+ Registro das atividades (
+\emph on
+checklist
+\emph default
+,
+ 
+\emph on
+commit
+\emph default
+) e envio dos dados via repositório do projeto.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Dia 3:
+ Projeto do Sistema e Revisão (Reunião Formal e Em Casa)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reunião Formal:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Executor apresenta o modelo de Análise OO consolidado.
+\end_layout
+
+\begin_layout Itemize
+Cliente comenta,
+ critica e solicita correções formais.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Executor (Em casa):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Definições de Projeto do Sistema:
+ organização da arquitetura do software,
+ definição das classes principais,
+ escolha de bibliotecas para leitura de arquivos,
+ manipulação de dados petrofísicos,
+ ajuste por polinômio de Taylor,
+ cálculo estatístico do coeficiente R² e preparação da estrutura para futura implementação em C++.
+\end_layout
+
+\begin_layout Itemize
+Projeto OO:
+ Criação do Diagrama de Componentes e Diagrama de Implantação (
+\emph on
+hardware/cluster
+\emph default
+).
+\end_layout
+
+\begin_layout Itemize
+Revisão e refatoração de todos os diagramas UML com base na arquitetura definida.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Dia 4:
+ Entrega da Modelagem Abrangente e Montagem do 
+\emph on
+Backlog
+\emph default
+ - Lista de Características (Reunião Formal)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reunião Formal:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Executor apresenta a documentação final do Ciclo de Concepção e Análise.
+ Inclui documento formal com descrição de todas as etapas desenvolvidas.
+ O Executor extrai dos modelos UML aprovados e entrega a Lista de Características (Backlog do Produto),
+ fatiando o escopo em entregas 
+\begin_inset Formula $c_{1},c_{2}...c_{n}$
+\end_inset
+
+,
+ habilitando o início imediato do Ciclo de Planejamento e Construção Iterativa.
+\end_layout
+
+\begin_layout Itemize
+Cliente:
+ comenta,
+ critica,
+ realiza o aceite técnico formal da documentação entregue e decide sobre a continuidade da mesma empresa/equipe para os ciclos de planejamento e construção.
+\end_layout
+
+\begin_layout Itemize
+Marco Final (
+\emph on
+Deliverable
+\emph default
+):
+ Documento final com todos os diagramas e o 
+\emph on
+Backlog
+\emph default
+ - Lista de Características.
+ Tudo atualizado e armazenado no repositório do projeto.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+CLÁUSULA 4 - CUSTOS E CONDIÇÕES DE PAGAMENTO
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A remuneração pelo projeto baseia-se no esforço de engenharia empregado na especificação,
+ modelagem,
+ testes lógicos e documentação,
+ eventualmente alguma codificação.
+\end_layout
+
+\begin_layout Itemize
+Valor da Hora de Engenharia de Software:
+ R$ 350,00.
+\end_layout
+
+\begin_layout Itemize
+Custo Total Estimado para o MVP (
+\emph on
+Minimum Viable Product
+\emph default
+):
+ R$ 14.000,00,
+ considerando 40h de engenharia.
+\end_layout
+
+\begin_layout Itemize
+Os recursos computacionais físicos para compilação e teste final são de inteira responsabilidade das CONTRATADAS.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+CLÁUSULA 5 - REQUISITOS TECNOLÓGICOS E EFICIÊNCIA ENERGÉTICA
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fica estabelecido que a implementação final da arquitetura modelada deverá ser conduzida na linguagem C++ (padrões modernos C++ 26 ou mais recente).
+ Esta exigência contratual é inegociável e visa garantir não apenas a máxima performance de execução (cálculos massivos de engenharia),
+ mas também a eficiência energética e ecológica,
+ mitigando o desperdício de processamento,
+ consumo de energia e recursos naturais frequentemente associados a linguagens interpretadas e antiecológicas.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+CLÁUSULA 6 - SIGILO E PROPRIEDADE INTELECTUAL
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+As CONTRATADAS comprometem-se a manter absoluto sigilo sobre os dados de campo,
+ dados laboratoriais,
+ e amostras de laboratório fornecidos pelos CONTRATANTES que tenham a marcação SIGILOSA.
+ 
+\end_layout
+
+\begin_layout Itemize
+A modelagem UML (diagramas e arquivos LyX),
+ e o código-fonte desenvolvido em C++ serão disponibilizados sobre a licença GPL no site 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.github/ldsc"
+literal "false"
+
+\end_inset
+
+ em repositório específico a ser criado.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+CLÁUSULA 7 - FORO
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fica eleito o foro da sala de aula,
+ Juiz Prof.
+ André D.
+ Bueno,
+ para dirimir quaisquer controvérsias oriundas da execução deste contrato de engenharia.
+\end_layout
+
+\begin_layout Itemize
+Macaé - RJ,
+ ____ de ___________________ de 202_.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+_________________________________________
+\end_layout
+
+\begin_layout Standard
+CONTRATANTE (Engenheiro Cliente)
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Grupo:
+ 
+\end_layout
+
+\begin_layout Standard
+Engenheiro ___________________ Assinatura:
+ __________________ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Engenheiro ___________________ Assinatura:
+ __________________ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Engenheiro ___________________ Assinatura:
+ __________________ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+_________________________________________
+\end_layout
+
+\begin_layout Standard
+CONTRATADA (Engenheiro Executor)
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Grupo:
+ 
+\end_layout
+
+\begin_layout Standard
+Engenheiro ___________________ Assinatura:
+ __________________ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Engenheiro ___________________ Assinatura:
+ __________________ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Engenheiro ___________________ Assinatura:
+ __________________ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+_____________________________________________ 
+\end_layout
+
+\begin_layout Standard
+Testemunha / Gestor de Projeto (Professor André Bueno)
+\end_layout
+
+\end_body
+\end_document
